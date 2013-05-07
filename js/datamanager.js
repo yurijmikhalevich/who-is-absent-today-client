@@ -124,7 +124,7 @@ J.DataManager.DateManager = {
     },
 
     getISODate : function() {
-        var date = new Date(this.year, this.month() - 1, this.day() - 1);
+        var date = new Date(this.year, this.month() - 1, this.day() + 1);
         date = date.toISOString();
         date = date.substring(0, date.indexOf('T'));
         return date;
