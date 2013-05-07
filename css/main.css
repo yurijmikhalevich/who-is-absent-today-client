@@ -74,9 +74,9 @@ aside {
 
 .table tbody tr td .icon-remove {
     float: right;
-    display: none;
+    visibility: hidden;
 }
 
 .table tbody tr:hover td .icon-remove {
-    display: block;
+    visibility: visible;
 }
