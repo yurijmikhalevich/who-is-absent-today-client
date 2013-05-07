@@ -22,7 +22,7 @@
 <body>
     <div class="navbar navbar-inverse">
         <div class="navbar-inner">
-            <a class="brand" href="#">Who is absent today?</a>
+            <a class="brand" href="/">Who is absent today?</a>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
             <tr data-bind="clickToCheck : $root, css : { success : $data.present() }">
                 <td data-bind="text: $index() + 1"></td>
                 <td data-bind="text: $data.firstName"></td>
-                <td> <span data-bind="text: $data.lastName"></span> <i class="icon-remove"></i> </td>
+                <td> <span data-bind="text: $data.lastName"></span> <i class="icon-remove" data-bind="clickToRemove : true"></i> </td>
                 <td class="hidden-student-id" data-bind="text: $data.id"></td>
             </tr>
             <!-- /ko -->

@@ -9,6 +9,10 @@ J.DataStorage.StudentsStorage = {
 	getStorage : function() { 
 		return this.__innerStorage;
 	},
+
+    clear : function() {
+        this.__innerStorage.removeAll();
+    },
 	
 	makeStudentsHere : function() {
 		var i = 0, len = this.__innerStorage().length;

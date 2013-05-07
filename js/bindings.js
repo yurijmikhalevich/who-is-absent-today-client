@@ -23,3 +23,13 @@ ko.bindingHandlers.clickToCheck = {
         });
     }
 };
+
+ko.bindingHandlers.clickToRemove = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        $(element).on('click', function(event) {
+            event.stopPropagation();
+            var studentId = $(this).closest('tr').find('.hidden-student-id').text();
+            J.DataManager.StudentsList.remove(studentId, true);
+        });
+    }
+};

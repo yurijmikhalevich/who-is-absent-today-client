@@ -37,6 +37,7 @@ J.DataManager.StudentsList = {
 			url : '/students/',
 			dataType : 'json',
 			success : function(data) {
+                self.__storage.clear();
 				var i = 0, len = data.length;
 				while(i < len) {
 					self.__storage.insert(data[i]);
@@ -61,14 +62,16 @@ J.DataManager.StudentsList = {
 		});
 	},
 	
-	remove : function(id) {
+	remove : function(id, updateList) {
+        var self = this;
 		$.ajax({
 			type : 'post',
 			url : '/students/remove/',
 			data : { id : id },
 			dataType : 'json',
 			success : function(data) {
-				console.log('ok, removed');
+                if(updateList)
+                    self.get();
 			}
 		});
 	},

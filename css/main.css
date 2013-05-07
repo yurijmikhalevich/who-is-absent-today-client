@@ -18,6 +18,11 @@ aside {
     width : 100%;
     height: 30px;
     margin-bottom: 0;
+    text-align: center;
+}
+
+.navbar .navbar-inner a {
+    float: none;
 }
 
 .date {
@@ -65,4 +70,13 @@ aside {
 .table tbody tr td {
 	-webkit-transition: background .55s ease;
 	-moz-transition: background .55s ease;	
+}
+
+.table tbody tr td .icon-remove {
+    float: right;
+    display: none;
+}
+
+.table tbody tr:hover td .icon-remove {
+    display: block;
 }
