@@ -24,7 +24,7 @@ J.DataStorage.StudentsStorage = {
 	
 	insert : function(studentData) {
 		var student = this.getStudentById(studentData.id);
-		var name = studentData.name.split(' ');
+		var name = $.trim(studentData.name).replace(/\s+/g, ' ').split(' ');
 		if(!student) {			
 			if(name.length == 1) {
 				this.__innerStorage.push({
