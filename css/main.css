@@ -1,0 +1,68 @@
+html, body {
+	height: 100%;
+    width: 100%;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select:none;
+    user-select: none;
+    cursor: default;
+}
+
+aside {
+    width : 350px;
+    height: calc(100% - 30px);
+    float: left;
+}
+
+.navbar {
+    width : 100%;
+    height: 30px;
+    margin-bottom: 0;
+}
+
+.date {
+    padding-top: 65px;
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.date span {
+    font-size: 10em;
+}
+
+.calendar.container {
+    padding-left: 50px;
+	width : 300px;
+}
+
+.student-list {
+    width : calc(100% - 350px);
+    margin-top: 30px;
+}
+
+.span4.modification {
+    width : 240px;
+}
+
+.calendar TH {
+    font-size: 1.3em;
+}
+
+.calendar TD, TD.day {
+    font-size: 18px;
+    width: 35px;
+    height: 30px;
+}
+
+.month {
+    font-size: 1.5em;
+}
+
+.hidden-student-id {
+    display: none;
+}
+
+.table tbody tr td {
+	-webkit-transition: background .55s ease;
+	-moz-transition: background .55s ease;	
+}

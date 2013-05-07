@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    
+	<link href="/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/calendar/css/bootstrap.calendar.css" rel="stylesheet"/>
+    <link href="/css/main.css" rel='stylesheet'/>
+	
+	<script src="/js/libs/jQuery.js" type="text/javascript"></script>
+    <script src="/js/libs/Knockout.js" type="text/javascript"></script>
+    <script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/calendar/bootstrap.calendar.js" type="text/javascript"></script>
+	
+	
+	<script src="/js/namespaces.js" type="text/javascript"></script>
+	<script src="/js/bindings.js" type="text/javascript"></script>
+	<script src="/js/studentstorage.js" type="text/javascript"></script>
+	<script src="/js/datamanager.js" type="text/javascript"></script>
+	<script src="/js/app.js" type="text/javascript"></script>
+    
+    <script>
+
+        var currentDate = {
+            day : ko.observable(''),
+            month : ko.observable(''),
+            year : '',
+
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+
+            setDate : function(date) {
+                this.day(date.day);
+                this.month(date.month);
+                this.year = date.year;
+            },
+
+            getISODate : function() {
+               var date = new Date(this.year, this.month() - 1, this.day());
+			   date = date.toISOString();
+			   date = date.substring(0, date.indexOf('T'));
+			   return date;
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-inner"></div>
+    </div>
+
+    <aside>
+        <div class = "date">
+            <span data-bind="text:day"></span>
+            <h4 data-bind="text: months[month() - 1]"></h4>
+        </div>
+        <div class="calendar container">
+            <div class="row">
+                <div class="span4 modification" id="calendar"></div>
+            </div>
+        </div>
+    </aside>
+
+    <table class = "table table-striped student-list">
+        <thead>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </thead>
+        <tbody>
+            <!-- ko foreach : storage().getStorage() -->
+            <tr data-bind="clickToCheck : $root, css : { success : $data.present() }">
+                <td data-bind="text: $index() + 1"></td>
+                <td data-bind="text: $data.firstName"></td>
+                <td data-bind="text: $data.lastName"></td>
+                <td class="hidden-student-id" data-bind="text: $data.id"></td>
+            </tr>
+            <!-- /ko -->
+
+            <tr class="new-student">
+                <td></td>
+                <td>
+                    <input type="text" data-bind="enterStudentData : true" placeholder = "Name (First + Last)"/>
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
