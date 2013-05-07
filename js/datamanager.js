@@ -79,7 +79,7 @@ J.DataManager.StudentsList = {
 		$.ajax({
 			type : 'post',
 			url : '/attendance/save/',
-			data : { date : currentDate.getISODate(), present : presentList },
+			data : { date : J.DataManager.DateManager.getISODate(), present : presentList },
 			dataType : 'json', 
 			success : function(data) {
 				console.log(data);
@@ -92,7 +92,7 @@ J.DataManager.StudentsList = {
 		$.ajax({
 			type : 'get',
 			url : '/attendance/',
-			data : { date : currentDate.getISODate() },
+			data : { date : J.DataManager.DateManager.getISODate() },
 			dataType : 'json',
 			success : function(data) {
 				self.__storage.makeStudentsHere();
@@ -106,4 +106,25 @@ J.DataManager.StudentsList = {
 			}
 		});
 	}
+};
+
+J.DataManager.DateManager = {
+    day : ko.observable(''),
+    month : ko.observable(''),
+    year : '',
+
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+
+    setDate : function(date) {
+        this.day(date.day);
+        this.month(date.month);
+        this.year = date.year;
+    },
+
+    getISODate : function() {
+        var date = new Date(this.year, this.month() - 1, this.day() - 1);
+        date = date.toISOString();
+        date = date.substring(0, date.indexOf('T'));
+        return date;
+    }
 };
