@@ -50,6 +50,7 @@ aside {
     width: 500px;
     max-width: 500px;
     margin-top: 30px;
+    display: inline-block;
 }
 
 .span4.modification {
@@ -110,4 +111,8 @@ aside {
 
 .table tbody tr td.edit-mode span {
     display: none;
+}
+
+.table tbody tr.new-student td input {
+    display: block;
 }
