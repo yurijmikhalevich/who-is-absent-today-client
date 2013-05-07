@@ -29,7 +29,7 @@ ko.bindingHandlers.clickToRemove = {
         $(element).on('click', function(event) {
             event.stopPropagation();
             var studentId = $(this).closest('tr').find('.hidden-student-id').text();
-            J.DataManager.StudentsList.remove(studentId, true);
+            J.DataManager.StudentsList.remove(studentId);
         });
     }
 };

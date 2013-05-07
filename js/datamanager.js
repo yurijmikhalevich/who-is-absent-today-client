@@ -62,7 +62,7 @@ J.DataManager.StudentsList = {
 		});
 	},
 	
-	remove : function(id, updateList) {
+	remove : function(id) {
         var self = this;
 		$.ajax({
 			type : 'post',
@@ -70,8 +70,7 @@ J.DataManager.StudentsList = {
 			data : { id : id },
 			dataType : 'json',
 			success : function(data) {
-                if(updateList)
-                    self.get();
+                self.__storage.remove(id);
 			}
 		});
 	},
