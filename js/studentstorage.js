@@ -24,31 +24,15 @@ J.DataStorage.StudentsStorage = {
 	
 	insert : function(studentData) {
 		var student = this.getStudentById(studentData.id);
-		var name = $.trim(studentData.name).replace(/\s+/g, ' ').split(' ');
-		if(!student) {			
-			if(name.length == 1) {
-				this.__innerStorage.push({
-					id : studentData._id,
-					firstName : ko.observable(name[0]),
-					lastName : ko.observable(''),
-					present : ko.observable(false)
-				});	
-			}else{
-				this.__innerStorage.push({
-					id : studentData._id,
-					firstName : ko.observable(name[0]),
-					lastName : ko.observable(name[1]),
-					present : ko.observable(false)
-				});
-			}
-			
+		var name = $.trim(studentData.name).replace(/\s+/g, ' ');
+		if(!student) {
+            this.__innerStorage.push({
+                id : studentData._id,
+                name : ko.observable(name),
+                present : ko.observable(false)
+            });
 		}else{
-			student.firstName(name[0]);
-			if(name.length == 2) {
-				student.lastName(name[1]);
-			}else{
-				student.lastNmae(' ');
-			}
+			student.name(name);
 		}
 	},
 	

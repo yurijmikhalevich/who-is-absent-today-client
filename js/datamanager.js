@@ -24,7 +24,6 @@ J.DataManager.StudentsList = {
 			url : '/students/insert/',
 			dataType : 'json', 
 			success : function(data) {
-				console.log(data);
 				self.__storage.insert(data);
 			}
 		});
@@ -51,13 +50,16 @@ J.DataManager.StudentsList = {
 	},
 	
 	update : function(id, name) {
+        var self = this;
 		$.ajax({
 			type : 'post',
 			url : '/students/update/',
 			data : { id : id, name : name },
 			dataType : 'json',
 			success : function(data) {
-				console.log('ok, updated');
+                var student = self.__storage.getStudentById(id);
+                if(student)
+                    student.name(name);
 			}			
 		});
 	},
@@ -77,7 +79,7 @@ J.DataManager.StudentsList = {
 	
 	saveAttendance : function() {
 		var self = this, presentList = self.__storage.getPresentList();
-		if(presentList.length == 0) return;
+		//if(presentList.length == 0) return;
 		$.ajax({
 			type : 'post',
 			url : '/attendance/save/',

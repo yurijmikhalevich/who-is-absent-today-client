@@ -14,6 +14,12 @@ aside {
     float: left;
 }
 
+.center {
+    display: inline-block;
+    position: absolute;
+    left: calc(50% - 425px);
+}
+
 .navbar {
     width : 100%;
     height: 30px;
@@ -41,7 +47,8 @@ aside {
 }
 
 .student-list {
-    width : calc(100% - 350px);
+    width: 500px;
+    max-width: 500px;
     margin-top: 30px;
 }
 
@@ -69,14 +76,38 @@ aside {
 
 .table tbody tr td {
 	-webkit-transition: background .55s ease;
-	-moz-transition: background .55s ease;	
+	-moz-transition: background .55s ease;
+    width: 500px;
+    max-width: 500px;
 }
 
-.table tbody tr td .icon-remove {
-    float: right;
+.table tbody tr td span {
+    display: inline-block;
+    max-width: 450px;
+    overflow: hidden;
+}
+
+.table tbody tr td input {
+    display:  none;
+}
+
+.table tbody tr td i {
     visibility: hidden;
+    float: right;
 }
 
-.table tbody tr:hover td .icon-remove {
+.table tbody tr:hover td i {
     visibility: visible;
+}
+
+.table tbody tr td.edit-mode .icon-edit {
+    display: none;
+}
+
+.table tbody tr td.edit-mode input {
+    display: inline-block;
+}
+
+.table tbody tr td.edit-mode span {
+    display: none;
 }

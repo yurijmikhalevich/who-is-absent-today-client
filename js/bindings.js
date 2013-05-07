@@ -33,3 +33,37 @@ ko.bindingHandlers.clickToRemove = {
         });
     }
 };
+
+ko.bindingHandlers.stopPropagation = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        $(element).on('click', function(event) {
+            event.stopPropagation();
+        });
+    }
+};
+
+ko.bindingHandlers.acceptChanges = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        $(element).on('keyup', function(event) {
+            event.stopPropagation();
+            element = $(element);
+            if(event.keyCode == 27) {
+                var newName = element.val(),
+                    studentId = viewModel.id;
+                if(newName.replace(/\s+/g, ' ').length == 0) return;
+                valueAccessor().update(studentId, newName);
+                element.parent().removeClass('edit-mode');
+            }
+        });
+    }
+};
+
+ko.bindingHandlers.clickToEdit = {
+    init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+        $(element).on('click', function(event) {
+            event.stopPropagation();
+            element = $(element);
+            element.parent().addClass('edit-mode');
+        });
+    }
+};

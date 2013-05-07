@@ -25,43 +25,40 @@
             <a class="brand" href="/">Who is absent today?</a>
         </div>
     </div>
-
-    <aside>
-        <div class = "date">
-            <span data-bind="text:day"></span>
-            <h4 data-bind="text: months[month() - 1]"></h4>
-        </div>
-        <div class="calendar container">
-            <div class="row">
-                <div class="span4 modification" id="calendar"></div>
+    <section class = 'center'>
+        <aside>
+            <div class = "date">
+                <span data-bind="text:day"></span>
+                <h4 data-bind="text: months[month() - 1]"></h4>
             </div>
-        </div>
-    </aside>
+            <div class="calendar container">
+                <div class="row">
+                    <div class="span4 modification" id="calendar"></div>
+                </div>
+            </div>
+        </aside>
 
-    <table class = "table student-list">
-        <thead>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </thead>
-        <tbody>
-            <!-- ko foreach : storage().getStorage() -->
-            <tr data-bind="clickToCheck : $root, css : { success : $data.present() }">
-                <td data-bind="text: $index() + 1"></td>
-                <td data-bind="text: $data.firstName"></td>
-                <td> <span data-bind="text: $data.lastName"></span> <i class="icon-remove" data-bind="clickToRemove : true"></i> </td>
-                <td class="hidden-student-id" data-bind="text: $data.id"></td>
-            </tr>
-            <!-- /ko -->
+        <table class = "table student-list">
+            <tbody>
+                <!-- ko foreach : storage().getStorage() -->
+                <tr data-bind="clickToCheck : $root, css : { success : $data.present() }">
+                    <td>
+                        <span data-bind="text: $data.name"></span>
+                        <input type="text" data-bind="value: $data.name, stopPropagation: true, acceptChanges: $root"></span>
+                        <i class="icon-remove" data-bind="clickToRemove: true"></i>
+                        <i class="icon-edit" data-bind="clickToEdit: true"></i>
+                    </td>
+                    <td class="hidden-student-id" data-bind="text: $data.id"></td>
+                </tr>
+                <!-- /ko -->
 
-            <tr class="new-student">
-                <td></td>
-                <td>
-                    <input type="text" data-bind="enterStudentData : true" placeholder = "Name (First + Last)"/>
-                </td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
+                <tr class="new-student">
+                    <td>
+                        <input type="text" data-bind="enterStudentData : true" placeholder = "Name (First + Last)"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
