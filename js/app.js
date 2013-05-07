@@ -1,7 +1,7 @@
 
 $(document).ready(function() { 
 	J.DataManager.StudentsList.initStorage(J.DataStorage.StudentsStorage);
-
+    $('.new-student').find('input').val('');
 	var date = new Date();
     J.DataManager.DateManager.setDate({ day : date.getUTCDate(), month : date.getMonth() + 1, year : date.getFullYear()  });
 	ko.applyBindings(J.DataManager.StudentsList, $('.student-list').get(0));
